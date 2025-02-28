@@ -47,7 +47,17 @@ function sortTable(n) {
     document.querySelectorAll("th")[n].querySelector("span").innerText = isAscending ? "↑" : "↓";
 }
 
-// Theme Toggle
-document.getElementById("theme-toggle").addEventListener("click", function() {
+// Theme Toggle Functionality
+const themeToggle = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+
+themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-theme");
+
+    // Change icon
+    if (document.body.classList.contains("dark-theme")) {
+        themeIcon.innerText = "🌚";  // Dark theme
+    } else {
+        themeIcon.innerText = "🌞";  // Light theme
+    }
 });
