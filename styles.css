@@ -1,11 +1,11 @@
-/* Light Theme: Soap Bubble Iridescence */
+/* Light Theme: Iridescent Glitch Effect */
 :root {
     --bg-color: white;
     --text-color: #222;
-    --table-header: radial-gradient(circle at 50% 50%, #ffffff, #f8f9fa, #ebf4ff, #dff3ff, #ffcaff, #fff7b7);
+    --table-header: linear-gradient(45deg, #ffdde1, #a1c4fd, #c3ecb2, #a1c4fd, #ffdde1);
     --table-border: rgba(0, 0, 0, 0.1);
     --highlight: #c8e6ff;
-    --shadow-glow: rgba(255, 255, 255, 0.8);
+    --shadow-glow: rgba(255, 255, 255, 0.9);
 }
 
 /* Dark Theme: Vaporwave Glow */
@@ -91,11 +91,13 @@ input {
     border: 1px solid var(--highlight);
 }
 
-/* Glitch Effect for Light Theme */
-@keyframes iridescent-glitch {
-    0% { filter: hue-rotate(0deg); }
-    50% { filter: hue-rotate(60deg); }
-    100% { filter: hue-rotate(0deg); }
+/* Glitch Animation */
+@keyframes glitch {
+    0% { filter: hue-rotate(0deg) brightness(1); }
+    25% { filter: hue-rotate(30deg) brightness(1.1); }
+    50% { filter: hue-rotate(-30deg) brightness(1.2); }
+    75% { filter: hue-rotate(10deg) brightness(1); }
+    100% { filter: hue-rotate(0deg) brightness(1); }
 }
 
 /* Glitch Soap Bubble Effect */
@@ -106,5 +108,5 @@ input {
 }
 
 :root {
-    animation: soap-bubble 6s infinite alternate ease-in-out;
+    animation: glitch 3s infinite alternate ease-in-out;
 }
