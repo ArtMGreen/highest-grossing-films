@@ -9,6 +9,7 @@ fetch("films.json")
                 <td>${film.release_year}</td>
                 <td>${film.director}</td>
                 <td>${film.box_office}</td>
+                <td>${film.country}</td>
             </tr>`;
             tableBody.innerHTML += row;
         });
@@ -24,18 +25,29 @@ function filterFilms() {
     });
 }
 
-// Sorting functionality
+// Sorting functionality with indicator
+let sortDirection = {};
 function sortTable(n) {
     let table = document.querySelector("table");
     let rows = Array.from(table.rows).slice(1);
-    let isAscending = table.getAttribute("data-sort") === "asc";
-    
+    let isAscending = !sortDirection[n];  // Toggle direction
+    sortDirection[n] = isAscending;
+
     rows.sort((rowA, rowB) => {
         let cellA = rowA.cells[n].innerText;
         let cellB = rowB.cells[n].innerText;
+
         return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
     });
 
-    table.setAttribute("data-sort", isAscending ? "desc" : "asc");
     rows.forEach(row => table.appendChild(row));
+
+    // Update sort indicator
+    document.querySelectorAll("th span").forEach(span => span.innerText = "");
+    document.querySelectorAll("th")[n].querySelector("span").innerText = isAscending ? "↑" : "↓";
 }
+
+// Theme Toggle
+document.getElementById("theme-toggle").addEventListener("click", function() {
+    document.body.classList.toggle("dark-theme");
+});
