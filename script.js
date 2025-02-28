@@ -17,10 +17,11 @@ fetch("films.json")
 
 // Search functionality
 function filterFilms() {
-    let input = document.getElementById("search").value.toLowerCase();
+    let input = document.getElementById("search").value.toLowerCase().trim();
     let rows = document.querySelectorAll("#films-table tr");
+
     rows.forEach(row => {
-        let title = row.cells[0].innerText.toLowerCase();
+        let title = row.cells[0].innerText.toLowerCase().trim();
         row.style.display = title.includes(input) ? "" : "none";
     });
 }
