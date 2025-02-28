@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="theme-toggle">Toggle Theme</button>
-    <h1>Highest-Grossing Films</h1>
+    <header>
+        <h1>Highest-Grossing Films</h1>
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            <span id="theme-icon">🌞</span>
+        </button>
+    </header>
+    
     <input type="text" id="search" placeholder="Search by title..." onkeyup="filterFilms()">
+    
     <table>
         <thead>
             <tr>
